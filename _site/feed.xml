@@ -6,24 +6,476 @@
 </description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 05 Mar 2017 16:51:54 -0800</pubDate>
-    <lastBuildDate>Sun, 05 Mar 2017 16:51:54 -0800</lastBuildDate>
+    <pubDate>Fri, 17 Mar 2017 06:23:15 -0700</pubDate>
+    <lastBuildDate>Fri, 17 Mar 2017 06:23:15 -0700</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
+        <title>redis study notes</title>
+        <description>&lt;h1 id=&quot;redis&quot;&gt;redis&lt;/h1&gt;
+
+&lt;h2 id=&quot;topics&quot;&gt;topics&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;cluster&lt;/li&gt;
+  &lt;li&gt;lock&lt;/li&gt;
+  &lt;li&gt;usage&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;hash-algorithm&quot;&gt;hash algorithm&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;how to select a hash function?
+    &lt;ol&gt;
+      &lt;li&gt;input data&lt;/li&gt;
+      &lt;li&gt;probability distribution&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;consistent-hash&quot;&gt;consistent hash&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;* 1-n mapping: node-vnode
+hashlist = hash(nodename+vnode[i]) for i in range(n)
+rbt.add(hashlist)
+
+* hit cache
+h1 = hash(request)
+cache = rbt.findCacheNode(h1)
+response = cache.handle(request)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://redis.io/topics/cluster-spec&quot;&gt;cluster spec&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        <pubDate>Fri, 17 Mar 2017 00:47:56 -0700</pubDate>
+        <link>/redis/2017/03/17/redis_notes.html</link>
+        <guid isPermaLink="true">/redis/2017/03/17/redis_notes.html</guid>
+        
+        
+        <category>redis</category>
+        
+      </item>
+    
+      <item>
+        <title>emacs</title>
+        <description>&lt;h1 id=&quot;emacs-configuration&quot;&gt;emacs configuration&lt;/h1&gt;
+
+&lt;h2 id=&quot;use-vi-mode-as-default&quot;&gt;use vi-mode as default&lt;/h2&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;
+(require &#39;package)
+(add-to-list &#39;package-archives &#39;(&quot;melpa&quot; . &quot;http://melpa.org/packages/&quot;))
+(package-initialize)
+(require &#39;evil)
+(evil-mode 1)
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;install-package&quot;&gt;install package&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1. install org-mode
+`M-x package-install RET org-mode RET`
+
+2. install markdown
+`M-x package-install RET markdown-mode RET`
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+</description>
+        <pubDate>Fri, 17 Mar 2017 00:46:26 -0700</pubDate>
+        <link>/admin/2017/03/17/17-emacs.html</link>
+        <guid isPermaLink="true">/admin/2017/03/17/17-emacs.html</guid>
+        
+        
+        <category>admin</category>
+        
+      </item>
+    
+      <item>
+        <title>front end study notes</title>
+        <description>&lt;div id=&quot;table-of-contents&quot;&gt;
+&lt;h2&gt;Table of Contents&lt;/h2&gt;
+&lt;div id=&quot;text-table-of-contents&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#sec-1&quot;&gt;1. javascript&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#sec-1-1&quot;&gt;1.1. keywords&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#sec-1-1-1&quot;&gt;1.1.1. closure&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#sec-1-1-2&quot;&gt;1.1.2. &quot;use strict&quot;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#sec-1-1-3&quot;&gt;1.1.3. - &quot;prototype&quot;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#sec-1-1-4&quot;&gt;1.1.4. - constructor&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#sec-1-1-5&quot;&gt;1.1.5. - LexicalEnvironment | closure | block&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#sec-1-1-6&quot;&gt;1.1.6. - ECMAScript ES3/ES5/ES6&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#sec-1-1-7&quot;&gt;1.1.7. - typeof | instanceof | null | undefined&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#sec-1-1-8&quot;&gt;1.1.8. - compare&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#sec-1-1-9&quot;&gt;1.1.9. - this&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#sec-1-2&quot;&gt;1.2. Built-in obj&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#sec-1-3&quot;&gt;1.3. DOM document object model&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#sec-1-4&quot;&gt;1.4. BOM browser object model&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#sec-1-5&quot;&gt;1.5. FOP&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#sec-1-5-1&quot;&gt;1.5.1. Arrow Functions =&amp;gt; (ES6 only, non IE support!)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#sec-1-5-2&quot;&gt;1.5.2. forEach/for in/for of&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#sec-1-5-3&quot;&gt;1.5.3. every/some&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#sec-1-5-4&quot;&gt;1.5.4. reverse/sort&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#sec-1-5-5&quot;&gt;1.5.5. map/reduce/filter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#sec-1-5-6&quot;&gt;1.5.6. generator/yield/*yield&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#sec-1-5-7&quot;&gt;1.5.7. Promise&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#sec-1-6&quot;&gt;1.6. OOP patterns&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#sec-1-6-1&quot;&gt;1.6.1. pseudo-class&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#sec-1-7&quot;&gt;1.7. Event&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#sec-1-7-1&quot;&gt;1.7.1. Asynchronous Event Queue&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#sec-1-7-2&quot;&gt;1.7.2. Synchronous Event&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#sec-1-8&quot;&gt;1.8. other source code&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#sec-1-9&quot;&gt;1.9. Ref&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#sec-2&quot;&gt;2. CSS&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#sec-2-1&quot;&gt;2.1. CSS3&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#sec-2-2&quot;&gt;2.2. SASS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#sec-2-3&quot;&gt;2.3. Compass&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h1 id=&quot;javascripta-idsec-1-namesec-1a&quot;&gt;javascript&lt;a id=&quot;sec-1&quot; name=&quot;sec-1&quot;&gt;&lt;/a&gt;&lt;/h1&gt;
+
+&lt;h2 id=&quot;keywordsa-idsec-1-1-namesec-1-1a&quot;&gt;keywords&lt;a id=&quot;sec-1-1&quot; name=&quot;sec-1-1&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
+
+&lt;h3 id=&quot;closurea-idsec-1-1-1-namesec-1-1-1a&quot;&gt;closure&lt;a id=&quot;sec-1-1-1&quot; name=&quot;sec-1-1-1&quot;&gt;&lt;/a&gt;&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;hide sth/ enable private method&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;use lexicalEnv as memoizer&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;use-stricta-idsec-1-1-2-namesec-1-1-2a&quot;&gt;“use strict”&lt;a id=&quot;sec-1-1-2&quot; name=&quot;sec-1-1-2&quot;&gt;&lt;/a&gt;&lt;/h3&gt;
+
+&lt;h3 id=&quot;prototypea-idsec-1-1-3-namesec-1-1-3a&quot;&gt;- “prototype”&lt;a id=&quot;sec-1-1-3&quot; name=&quot;sec-1-1-3&quot;&gt;&lt;/a&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;table&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td&gt;obj._&lt;sub&gt;proto&lt;/sub&gt;__&lt;/td&gt;
+          &lt;td&gt;function.prototype/function._&lt;sub&gt;proto&lt;/sub&gt;__&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Object.create(proto, propertiesObject)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;obj = new Function;&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;obj._&lt;sub&gt;proto&lt;/sub&gt;__ = Function.prototype&lt;/li&gt;
+      &lt;li&gt;obj.constructor = Function = Function.prototype.constructor&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;constructora-idsec-1-1-4-namesec-1-1-4a&quot;&gt;- constructor&lt;a id=&quot;sec-1-1-4&quot; name=&quot;sec-1-1-4&quot;&gt;&lt;/a&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;obj.constructor | Object.prototype.constructor
+alert( rabbit.hasOwnProperty(‘constructor’) ) &lt;em&gt;/ false
+alert( Rabbit.prototype.hasOwnProperty(‘constructor’) ) /&lt;/em&gt; true&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;lexicalenvironment--closure--blocka-idsec-1-1-5-namesec-1-1-5a&quot;&gt;- LexicalEnvironment | closure | block&lt;a id=&quot;sec-1-1-5&quot; name=&quot;sec-1-1-5&quot;&gt;&lt;/a&gt;&lt;/h3&gt;
+
+&lt;h3 id=&quot;ecmascript-es3es5es6a-idsec-1-1-6-namesec-1-1-6a&quot;&gt;- ECMAScript ES3/ES5/ES6&lt;a id=&quot;sec-1-1-6&quot; name=&quot;sec-1-1-6&quot;&gt;&lt;/a&gt;&lt;/h3&gt;
+
+&lt;h3 id=&quot;typeof--instanceof--null--undefineda-idsec-1-1-7-namesec-1-1-7a&quot;&gt;- typeof | instanceof | null | undefined&lt;a id=&quot;sec-1-1-7&quot; name=&quot;sec-1-1-7&quot;&gt;&lt;/a&gt;&lt;/h3&gt;
+
+&lt;h3 id=&quot;comparea-idsec-1-1-8-namesec-1-1-8a&quot;&gt;- compare&lt;a id=&quot;sec-1-1-8&quot; name=&quot;sec-1-1-8&quot;&gt;&lt;/a&gt;&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;stric equal &lt;code class=&quot;highlighter-rouge&quot;&gt;=&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;abstract equal ==&lt;/li&gt;
+  &lt;li&gt;Object.is(val1,val2)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;thisa-idsec-1-1-9-namesec-1-1-9a&quot;&gt;- this&lt;a id=&quot;sec-1-1-9&quot; name=&quot;sec-1-1-9&quot;&gt;&lt;/a&gt;&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;called as obj.method&lt;/li&gt;
+  &lt;li&gt;called as function
+    &lt;ul&gt;
+      &lt;li&gt;Window/Global/undefined (“use strict”)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;called in new&lt;/li&gt;
+  &lt;li&gt;explicit this
+func.call(context, args…)
+func.apply(context, [arg]|args…)
+func.bind(context, args…)()&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;built-in-obja-idsec-1-2-namesec-1-2a&quot;&gt;Built-in obj&lt;a id=&quot;sec-1-2&quot; name=&quot;sec-1-2&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Function
+    &lt;ol&gt;
+      &lt;li&gt;
+        &lt;table&gt;
+          &lt;tbody&gt;
+            &lt;tr&gt;
+              &lt;td&gt;arguments&lt;/td&gt;
+              &lt;td&gt;arguments.callee&lt;/td&gt;
+            &lt;/tr&gt;
+          &lt;/tbody&gt;
+        &lt;/table&gt;
+      &lt;/li&gt;
+      &lt;li&gt;static fields: arguments.callee.count&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;dom-document-object-modela-idsec-1-3-namesec-1-3a&quot;&gt;DOM document object model&lt;a id=&quot;sec-1-3&quot; name=&quot;sec-1-3&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
+
+&lt;h2 id=&quot;bom-browser-object-modela-idsec-1-4-namesec-1-4a&quot;&gt;BOM browser object model&lt;a id=&quot;sec-1-4&quot; name=&quot;sec-1-4&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;alert/confirm/prompt&lt;/li&gt;
+  &lt;li&gt;url&lt;/li&gt;
+  &lt;li&gt;frame&lt;/li&gt;
+  &lt;li&gt;XMLHttpRequest&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;fopa-idsec-1-5-namesec-1-5a&quot;&gt;FOP&lt;a id=&quot;sec-1-5&quot; name=&quot;sec-1-5&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
+
+&lt;h3 id=&quot;arrow-functions--es6-only-non-ie-supporta-idsec-1-5-1-namesec-1-5-1a&quot;&gt;Arrow Functions =&amp;gt; (ES6 only, non IE support!)&lt;a id=&quot;sec-1-5-1&quot; name=&quot;sec-1-5-1&quot;&gt;&lt;/a&gt;&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;definition&lt;/p&gt;
+
+    &lt;p&gt;An arrow function expression has a shorter syntax than a function expression and does not bind its own this, arguments, super, or new.target. 
+These function expressions are best suited for non-method functions, and they cannot be used as constructors.&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;(param1, param2, …, paramN) =&amp;gt; { statements }
+(param1, param2, …, paramN) =&amp;gt; expression
+// equivalent to: (param1, param2, …, paramN) =&amp;gt; { return expression; }
+    
+// Parentheses are optional when there&#39;s only one parameter:
+(singleParam) =&amp;gt; { statements }
+singleParam =&amp;gt; { statements }
+    
+// A function with no parameters requires parentheses:
+() =&amp;gt; { statements }
+() =&amp;gt; expression // equivalent to: () =&amp;gt; { return expression; }
+    
+// Parenthesize the body to return an object literal expression:
+params =&amp;gt; ({foo: bar})
+    
+// Rest parameters and default parameters are supported
+(param1, param2, ...rest) =&amp;gt; { statements }
+(param1 = defaultValue1, param2, …, paramN = defaultValueN) =&amp;gt; { statements }
+    
+// Destructuring within the parameter list is also supported
+var f = ([a, b] = [1, 2], {x: c} = {x: a + b}) =&amp;gt; a + b + c;
+f();  // 6
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;not bind its own this, arguments, super, or new.target; not as constructor&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&#39;use strict&#39;;
+var obj = {
+  i: 10,
+  b: () =&amp;gt; console.log(this.i, this),
+  c: function() {
+    console.log(this.i, this);
+  }
+}
+obj.b(); // prints undefined, undefined
+obj.c(); // prints 10, Object {...}
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;foreachfor-infor-ofa-idsec-1-5-2-namesec-1-5-2a&quot;&gt;forEach/for in/for of&lt;a id=&quot;sec-1-5-2&quot; name=&quot;sec-1-5-2&quot;&gt;&lt;/a&gt;&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;var s = &#39;a𝓌a&#39;;
+for(var c of s) console.log(c);
+
+for(var c in s) console.log(s[c]);
+Array.prototype.forEach.call(s, c =&amp;gt; console.log(c));
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;everysomea-idsec-1-5-3-namesec-1-5-3a&quot;&gt;every/some&lt;a id=&quot;sec-1-5-3&quot; name=&quot;sec-1-5-3&quot;&gt;&lt;/a&gt;&lt;/h3&gt;
+
+&lt;h3 id=&quot;reversesorta-idsec-1-5-4-namesec-1-5-4a&quot;&gt;reverse/sort&lt;a id=&quot;sec-1-5-4&quot; name=&quot;sec-1-5-4&quot;&gt;&lt;/a&gt;&lt;/h3&gt;
+
+&lt;h3 id=&quot;mapreducefiltera-idsec-1-5-5-namesec-1-5-5a&quot;&gt;map/reduce/filter&lt;a id=&quot;sec-1-5-5&quot; name=&quot;sec-1-5-5&quot;&gt;&lt;/a&gt;&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;var materials = [&#39;Hydrogen&#39;, &#39;Helium&#39;, &#39;Lithium&#39;, &#39;Beryllium&#39;];
+var result = materials.map(material =&amp;gt; material.length).filter(n=&amp;gt;n&amp;gt;7).reduce((a,b)=&amp;gt;a+b);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;reduce&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[0, 1, 2, 3, 4].reduce( (accumulator, currentValue, currentIndex, array) =&amp;gt; accumulator + currentValue,
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+
+    &lt;p&gt;100
+);&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;generatoryieldyielda-idsec-1-5-6-namesec-1-5-6a&quot;&gt;generator/yield/*yield&lt;a id=&quot;sec-1-5-6&quot; name=&quot;sec-1-5-6&quot;&gt;&lt;/a&gt;&lt;/h3&gt;
+
+&lt;h3 id=&quot;promisea-idsec-1-5-7-namesec-1-5-7a&quot;&gt;Promise&lt;a id=&quot;sec-1-5-7&quot; name=&quot;sec-1-5-7&quot;&gt;&lt;/a&gt;&lt;/h3&gt;
+
+&lt;h2 id=&quot;oop-patternsa-idsec-1-6-namesec-1-6a&quot;&gt;OOP patterns&lt;a id=&quot;sec-1-6&quot; name=&quot;sec-1-6&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
+
+&lt;h3 id=&quot;pseudo-classa-idsec-1-6-1-namesec-1-6-1a&quot;&gt;pseudo-class&lt;a id=&quot;sec-1-6-1&quot; name=&quot;sec-1-6-1&quot;&gt;&lt;/a&gt;&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;function Hamster() { 
+  this.food = []
+}
+Hamster.prototype = {
+  found: function(something) {
+    this.food.push(something)
+  }
+}
+
+speedy = new Hamster()
+lazy = new Hamster()
+
+speedy.found(&quot;apple&quot;)
+speedy.found(&quot;orange&quot;)
+
+alert(speedy.food.length) // 2
+alert(lazy.food.length) // 0(!)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;eventa-idsec-1-7-namesec-1-7a&quot;&gt;Event&lt;a id=&quot;sec-1-7&quot; name=&quot;sec-1-7&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
+
+&lt;h3 id=&quot;asynchronous-event-queuea-idsec-1-7-1-namesec-1-7-1a&quot;&gt;Asynchronous Event Queue&lt;a id=&quot;sec-1-7-1&quot; name=&quot;sec-1-7-1&quot;&gt;&lt;/a&gt;&lt;/h3&gt;
+
+&lt;h3 id=&quot;synchronous-eventa-idsec-1-7-2-namesec-1-7-2a&quot;&gt;Synchronous Event&lt;a id=&quot;sec-1-7-2&quot; name=&quot;sec-1-7-2&quot;&gt;&lt;/a&gt;&lt;/h3&gt;
+
+&lt;h2 id=&quot;other-source-codea-idsec-1-8-namesec-1-8a&quot;&gt;other source code&lt;a id=&quot;sec-1-8&quot; name=&quot;sec-1-8&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// 1. Function declarations are initialized before the code is executed.
+// window = { f: function }
+
+// 2. Variables are added as window properties.
+// window = { f: function, a: undefined, g: undefined }
+
+var a = 5   // &amp;lt;-- var
+
+function f(arg) { alert(&#39;f:&#39;+arg) }
+
+var g = function(arg) { alert(&#39;g:&#39;+arg) } // &amp;lt;-- var
+
+//read vs set
+function f() {
+  x = 5 // writing x puts it into outmost LexicalEnvironment
+  console.log(typeof y); //undefined
+  console.log(abc); //error
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;refa-idsec-1-9-namesec-1-9a&quot;&gt;Ref&lt;a id=&quot;sec-1-9&quot; name=&quot;sec-1-9&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;javascript.info
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;http://javascript.info/tutorial/inheritance#inheritance-the-proto&quot;&gt;http://javascript.info/tutorial/inheritance#inheritance-the-proto&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;google: RegExp mdc/ regexp msdn jscript&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;cssa-idsec-2-namesec-2a&quot;&gt;CSS&lt;a id=&quot;sec-2&quot; name=&quot;sec-2&quot;&gt;&lt;/a&gt;&lt;/h1&gt;
+
+&lt;h2 id=&quot;css3a-idsec-2-1-namesec-2-1a&quot;&gt;CSS3&lt;a id=&quot;sec-2-1&quot; name=&quot;sec-2-1&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
+
+&lt;h2 id=&quot;sassa-idsec-2-2-namesec-2-2a&quot;&gt;SASS&lt;a id=&quot;sec-2-2&quot; name=&quot;sec-2-2&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;Sass is an extension of CSS3 which adds nested rules, variables, mixins, selector inheritance, and more. 
+Sass generates well formatted CSS and makes your stylesheets easier to organize and maintain.&lt;/p&gt;
+
+&lt;h2 id=&quot;compassa-idsec-2-3-namesec-2-3a&quot;&gt;Compass&lt;a id=&quot;sec-2-3&quot; name=&quot;sec-2-3&quot;&gt;&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;Compass is an open-source CSS authoring framework which uses the Sass stylesheet language to make writing stylesheets powerful and easy.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 01 Mar 2017 19:24:55 -0800</pubDate>
+        <link>/front_end/2017/03/01/front-end-notes.html</link>
+        <guid isPermaLink="true">/front_end/2017/03/01/front-end-notes.html</guid>
+        
+        
+        <category>front_end</category>
+        
+      </item>
+    
+      <item>
         <title>Welcome to personal page powered by Jekyll!</title>
-        <description>&lt;p&gt;This is my first post with Jekyll.
+        <description>&lt;h1 id=&quot;jekyll&quot;&gt;Jekyll&lt;/h1&gt;
+
+&lt;p&gt;This is my first post with Jekyll.
 Check out the &lt;a href=&quot;http://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&quot;emacs-integration&quot;&gt;emacs integration&lt;/h1&gt;
+
+&lt;h2 id=&quot;for-org-mode-user&quot;&gt;for org-mode user:&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1. write a org file in emacs org-mode
+2. export to markdown
+3. jekyll build
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;for-markdown-mode-user&quot;&gt;for markdown-mode user:&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1. write a md file in emacs markdown-mode
+2. jekyll build
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 </description>
         <pubDate>Mon, 27 Feb 2017 19:24:55 -0800</pubDate>
-        <link>/jekyll/update/2017/02/27/welcome-to-jekyll.html</link>
-        <guid isPermaLink="true">/jekyll/update/2017/02/27/welcome-to-jekyll.html</guid>
+        <link>/admin/2017/02/27/welcome-to-jekyll.html</link>
+        <guid isPermaLink="true">/admin/2017/02/27/welcome-to-jekyll.html</guid>
         
         
-        <category>jekyll</category>
-        
-        <category>update</category>
+        <category>admin</category>
         
       </item>
     

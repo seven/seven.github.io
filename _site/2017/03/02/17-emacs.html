@@ -1,0 +1,22 @@
+
+<h1 id="emacs-configuration">emacs configuration</h1>
+
+<h2 id="use-vi-mode-as-default">use vi-mode as default</h2>
+<p><code class="highlighter-rouge">
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+(package-initialize)
+(require 'evil)
+(evil-mode 1)
+</code></p>
+
+<h2 id="install-package">install package</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>1. install org-mode
+`M-x package-install RET org-mode RET`
+
+2. install markdown
+`M-x package-install RET markdown-mode RET`
+</code></pre>
+</div>
+

@@ -1,0 +1,24 @@
+---
+layout: post
+title:  "redis study notes"
+date:   Fri Mar 17 00:47:56 PDT 2017
+categories: redis
+---
+
+# redis #
+  * cluster
+  * lock
+  * usage
+  
+# hash algorithm #
+  * how to select a hash function?
+      1. input data
+      2. probability distribution 
+
+# sub 3 #
+
+  
+  
+  
+
+1. [cluster spec](https://redis.io/topics/cluster-spec)
