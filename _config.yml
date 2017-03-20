@@ -17,5 +17,8 @@ github_username:  seven
 
 # Build settings
 markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
 
 exclude: ["*.org"]
