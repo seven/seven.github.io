@@ -54,8 +54,11 @@ inline code `alert(s)`
 
 python code
 
-	indent	
-	indent	
+    ```python
+    def say:
+        yield 1
+        pass
+    ```
 	
 ```python
 def say:
