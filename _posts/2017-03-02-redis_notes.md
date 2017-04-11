@@ -5,8 +5,11 @@ date:   Fri Mar 17 00:47:56 PDT 2017
 categories: redis
 ---
 
+
 redis key notes 
-----
+
+* TOC
+{:toc}
 
 # redis data types
 
@@ -170,7 +173,8 @@ Redisson
     }
 ```
 
-unlock implementation
+## unlock implementation ##
+
 ```java
 public void unlock() {
         Boolean opStatus = commandExecutor.evalWrite(getName(), LongCodec.INSTANCE, RedisCommands.EVAL_BOOLEAN,

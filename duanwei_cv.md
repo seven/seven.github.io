@@ -1,7 +1,7 @@
 ---
 layout: cv 
 title: About Me
-permalink: /about_me/
+permalink: /about/
 ---
 
 Chengdu, China | <seven.duan@gmail.com> | 86 (0)189 8O6I 35Z3 
